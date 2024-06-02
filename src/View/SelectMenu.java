@@ -1,27 +1,16 @@
 package View;
 
-import com.sun.awt.AWTUtilities;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.RoundRectangle2D;
 
 public class SelectMenu extends JFrame implements MouseListener, ActionListener, MouseMotionListener {
-    private Button close_btn;
-    private Button small_btn;
-    private Point pos;
-    private static final String[] closeIcons = {
-            "src/images/close_icon.png", "src/images/close_pressed.png", "src/images/close_pressed.png"
-    };
-    private static final String[] smallIcons = {
-            "src/images/small_icon.png", "src/images/small_pressed.png", "src/images/small_pressed.png"
-    };
+    public Point pos;
 
     public SelectMenu() {
         setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        init();
-        setUndecorated(true);
+        // 使用系统自带的窗口装饰
+        setUndecorated(false);
         setVisible(true);
         setLayout(null);
         setBounds(580, 185, 290, 420);
@@ -29,43 +18,8 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
         paintBg();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         addMouseListener(this);
-        AWTUtilities.setWindowShape(this,
-                new RoundRectangle2D.Double(0D, 0D, this.getWidth(),
-                        this.getHeight(), 24.0D, 24.0D));
     }
 
-    private void init() {
-        close_btn = new Button(closeIcons, null);
-        close_btn.setBounds(260, 0, 30, 30);
-        close_btn.addActionListener(this);
-        close_btn.setBorderPainted(false);
-        JButton btn = new JButton("");
-        JLabel headLabel = new JLabel();
-        headLabel.setBounds(30, 0, 230, 30);
-        headLabel.setOpaque(true);
-        headLabel.setBackground(new Color(72, 72, 72));
-        headLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                super.mousePressed(e);
-                pos = new Point(e.getX(), e.getY());
-                setCursor(new Cursor(Cursor.MOVE_CURSOR));
-            }
-
-            public void mouseReleased(MouseEvent e) {
-                setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-            }
-        });
-        headLabel.addMouseMotionListener(this);
-        small_btn = new Button(smallIcons, null);
-        small_btn.setBounds(0, 0, 30, 30);
-        small_btn.addActionListener(this);
-        small_btn.setBorderPainted(false);
-        add(headLabel);
-        add(close_btn);
-        add(small_btn);
-        add(btn);
-    }
 
     public void paintBg() {
         ImageIcon image = new ImageIcon("src/images/5.jpg");
@@ -88,7 +42,7 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
         if (x >= 65 && x <= 231 && y >= 120 && y <= 150) {
             // 人机
             dispose();
-            new PCMainBoard(3);
+            new PCMainBoard();
         } else if (x >= 65 && x <= 231 && y >= 210 && y <= 250) {
             // 人人
             dispose();
@@ -121,11 +75,6 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == small_btn) {
-            setExtendedState(ICONIFIED);
-        } else if (e.getSource() == close_btn) {
-            dispose();
-        }
     }
 
     @Override
@@ -139,3 +88,4 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
 
     }
 }
+

@@ -12,20 +12,14 @@ public class PCMainBoard extends MainBoard {
     private JButton btn_startGame;
     private JButton btn_back;
     private JButton btn_exit;
-    private final int level;
-
-    public int getLevel() {
-        return level;
-    }
 
     public JButton getBtn_startGame() {
         return btn_startGame;
     }
 
-    public PCMainBoard(int level) {
+    public PCMainBoard() {
         super();
         init();
-        this.level = level;
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
