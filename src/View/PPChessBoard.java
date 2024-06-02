@@ -7,13 +7,12 @@ import Net.NetTool;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class PPChessBoard extends ChessBoard {
     private int role;
     private JTextArea ta_pos_info;
-    private PPMainBoard mb;
-    private WinDialog dialog;
+    private final PPMainBoard mb;
+    private final WinDialog dialog;
 
     /**
      * 构造函数，初始化棋盘的图片，初始化数组
@@ -56,10 +55,6 @@ public class PPChessBoard extends ChessBoard {
         this.role = role;
     }
 
-    public int getRole() {
-        return role;
-    }
-
     /**
      * 从父类继承的方法，自动调用，绘画图形
      * 
@@ -68,18 +63,6 @@ public class PPChessBoard extends ChessBoard {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-    }
-
-    public int getResult() {
-        return result;
-    }
-
-    public int getChessX() {
-        return chessX;
-    }
-
-    public int getChessY() {
-        return chessY;
     }
 
     public void WinEvent(int winner) {
@@ -133,8 +116,7 @@ public class PPChessBoard extends ChessBoard {
 
     /**
      * 按下鼠标时，记录鼠标的位置，并改写数组的数值，重新绘制图形
-     * 
-     * @param e
+     *
      */
     @Override
     public void mousePressed(MouseEvent e) {
@@ -142,8 +124,8 @@ public class PPChessBoard extends ChessBoard {
             chessX = e.getX();
             chessY = e.getY();
             if (chessX < 524 && chessX > 50 && chessY < 523 && chessY > 50) {
-                float x = (chessX - 49) / 25;
-                float y = (chessY - 50) / 25;
+                float x = (float) (chessX - 49) / 25;
+                float y = (float) (chessY - 50) / 25;
                 int x1 = (int) x;
                 int y1 = (int) y;
                 // 如果这个地方没有棋子
@@ -162,5 +144,4 @@ public class PPChessBoard extends ChessBoard {
             }
         }
     }
-
 }

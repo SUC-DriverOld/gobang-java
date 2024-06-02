@@ -1,21 +1,15 @@
 package Model;
 
-/**
- *
- */
 public class Computer {
-    private int test = 0;
     private int scores;
     private Coord coord = new Coord();
-    private int everyPlayerPointScore[][] = new int[19][19];
-    private int everyComputerPointScore[][] = new int[19][19];
+    private final int[][] everyPlayerPointScore = new int[19][19];
+    private final int[][] everyComputerPointScore = new int[19][19];
 
     /**
      * 计算下棋位置
-     * 
-     * @param role 角色 chess[][]棋盘
      */
-    public Coord computePos(int role, int chess[][], int level){
+    public Coord computePos(int[][] chess){
         countMaxLines_medium(chess, Chess.WHITE);
         return coord;
     }
@@ -26,7 +20,7 @@ public class Computer {
      * @param chess 棋盘数组
      * @param role  白棋还是黑棋
      */
-    public void countMaxLines_medium(int chess[][], int role) {
+    public void countMaxLines_medium(int[][] chess, int role) {
         Coord playerCoord = new Coord();
         Coord computerCoord = new Coord();
         int x, y;
@@ -56,9 +50,8 @@ public class Computer {
      * 
      * @param a 数组 存储每个点的分数
      * @param c 保存最大分数点的坐标
-     * @return
      */
-    public int findBestPos_medium(int a[][], Coord c) {
+    public int findBestPos_medium(int[][] a, Coord c) {
         int i, j, max = 0;
 
         for (i = 0; i < 19; i++) {
@@ -145,13 +138,9 @@ public class Computer {
 
     /**
      * 计算每个坐标的分数
-     * 
-     * @param x
-     * @param y
-     * @param chess
-     * @param role
+     *
      */
-    public void countEveryPos_medium(int x, int y, int chess[][], int role) {
+    public void countEveryPos_medium(int x, int y, int[][] chess, int role) {
         scores = 0;
         basicScore(x, y);
         // countTwo代表有一个坐标向八个方向数 两个连一起的个数
@@ -309,15 +298,13 @@ public class Computer {
         mark_medium(count, leftDown + rightUp, countTwo, role);
     }
 
-
     /**
      * 找到最大分数点的坐标
      *
      * @param a 数组 存储每个点的分数
      * @param c 保存最大分数点的坐标
-     * @return
      */
-    public int findBestPos(int a[][], Coord c) {
+    public int findBestPos(int[][] a, Coord c) {
         int i, j, max = 0;
 
         for (i = 0; i < 19; i++) {

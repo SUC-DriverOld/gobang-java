@@ -1,8 +1,5 @@
 package Model;
 
-/**
- * 
- */
 public class Coord {
     private int x;
     private int y;

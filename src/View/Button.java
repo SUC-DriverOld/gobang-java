@@ -3,24 +3,11 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * 
- */
-public class Btns extends JButton {
-    private String[] image_url;
-    private boolean hasImage;
+public class Button extends JButton {
+    private final String[] image_url;
+    private final boolean hasImage;
 
-    public Btns() {
-        super();
-        hasImage = false;
-    }
-
-    public Btns(String text) {
-        super(text);
-        hasImage = false;
-    }
-
-    public Btns(String[] image_url, String text) {
+    public Button(String[] image_url, String text) {
         super(text);
         hasImage = true;
         this.image_url = image_url;
@@ -34,7 +21,7 @@ public class Btns extends JButton {
         ButtonModel model = getModel();
         Image image;
         // 当按钮被按下
-        if (hasImage == true) {
+        if (hasImage) {
             if (model.isPressed()) {
                 Color c = new Color(0, 0, 0);
                 g.setColor(c);

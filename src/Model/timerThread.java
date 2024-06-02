@@ -2,11 +2,8 @@ package Model;
 
 import javax.swing.*;
 
-/**
- * 
- */
 public class timerThread extends Thread {
-    private JLabel label;
+    private final JLabel label;
 
     public timerThread(JLabel label) {
         this.label = label;
@@ -14,20 +11,16 @@ public class timerThread extends Thread {
 
     public void run() {
         long startTime = System.currentTimeMillis();
-        while (true) {
+        do {
             long currentTime = System.currentTimeMillis();
             long time = currentTime - startTime;
             label.setText(format(time));
-            if (this.isInterrupted()) {
-                break;
-            }
-        }
+        } while (!this.isInterrupted());
     }
 
     private String format(long elapsed) {
-        int hour, minute, second, milli;
+        int hour, minute, second;
 
-        milli = (int) (elapsed % 1000);
         elapsed = elapsed / 1000;
 
         second = (int) (elapsed % 60);

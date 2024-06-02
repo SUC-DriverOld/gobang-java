@@ -8,16 +8,13 @@ import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class SelectMenu extends JFrame implements MouseListener, ActionListener, MouseMotionListener {
-    private Btns close_btn;
-    private Btns small_btn;
-    private JButton btn;
-    private JLabel headLabel;
+    private Button close_btn;
+    private Button small_btn;
     private Point pos;
-    private Point newPos;
-    private static String[] closeIcons = {
+    private static final String[] closeIcons = {
             "src/images/close_icon.png", "src/images/close_pressed.png", "src/images/close_pressed.png"
     };
-    private static String[] smallIcons = {
+    private static final String[] smallIcons = {
             "src/images/small_icon.png", "src/images/small_pressed.png", "src/images/small_pressed.png"
     };
 
@@ -38,13 +35,12 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
     }
 
     private void init() {
-
-        close_btn = new Btns(closeIcons, null);
+        close_btn = new Button(closeIcons, null);
         close_btn.setBounds(260, 0, 30, 30);
         close_btn.addActionListener(this);
         close_btn.setBorderPainted(false);
-        btn = new JButton("");
-        headLabel = new JLabel();
+        JButton btn = new JButton("");
+        JLabel headLabel = new JLabel();
         headLabel.setBounds(30, 0, 230, 30);
         headLabel.setOpaque(true);
         headLabel.setBackground(new Color(72, 72, 72));
@@ -61,7 +57,7 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
             }
         });
         headLabel.addMouseMotionListener(this);
-        small_btn = new Btns(smallIcons, null);
+        small_btn = new Button(smallIcons, null);
         small_btn.setBounds(0, 0, 30, 30);
         small_btn.addActionListener(this);
         small_btn.setBorderPainted(false);
@@ -118,7 +114,7 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
 
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         new SelectMenu();
     }
 
@@ -134,7 +130,7 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        newPos = new Point(getLocation().x + e.getX() - pos.x, getLocation().y + e.getY() - pos.y);
+        Point newPos = new Point(getLocation().x + e.getX() - pos.x, getLocation().y + e.getY() - pos.y);
         setLocation(newPos.x, newPos.y);
     }
 

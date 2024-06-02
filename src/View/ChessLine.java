@@ -5,13 +5,10 @@ import Model.Chess;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * 
- */
 public class ChessLine extends JPanel {
-    private int chessColor;
-    private Image whiteChess;
-    private Image blackChess;
+    private final int chessColor;
+    private final Image whiteChess;
+    private final Image blackChess;
 
     public ChessLine(int chessColor) {
         whiteChess = Toolkit.getDefaultToolkit().getImage("src/images/white.png");

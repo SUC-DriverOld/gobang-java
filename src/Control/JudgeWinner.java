@@ -1,10 +1,7 @@
 package Control;
 
-/**
- * 
- */
 public class JudgeWinner {
-    public static int PPJudge(int x, int y, int chess[][], int role) {
+    public static int PPJudge(int x, int y, int[][] chess, int role) {
         int startX = x, startY = y, count = 1;
         // 竖直方向上判断输赢
         while (true) {

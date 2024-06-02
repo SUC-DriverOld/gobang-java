@@ -6,22 +6,13 @@ import Model.timerThread;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-/**
- *
- */
 public class PCMainBoard extends MainBoard {
     private PCChessBoard cb;
     private JButton btn_startGame;
     private JButton btn_back;
     private JButton btn_exit;
-    private int level;
-    private ChessLine cl1;
-    private ChessLine cl2;
-    private ChessLine cl3;
-    private ChessLine cl4;
-    private ChessLine cl5;
+    private final int level;
 
     public int getLevel() {
         return level;
@@ -31,11 +22,8 @@ public class PCMainBoard extends MainBoard {
         return btn_startGame;
     }
 
-    public JButton getBtn_back() {
-        return btn_back;
-    }
-
     public PCMainBoard(int level) {
+        super();
         init();
         this.level = level;
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -64,11 +52,11 @@ public class PCMainBoard extends MainBoard {
         btn_exit.setFocusable(false);
         btn_exit.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
         btn_exit.addActionListener(this);
-        cl1 = new ChessLine(Chess.BLACK);
+        ChessLine cl1 = new ChessLine(Chess.BLACK);
         cl1.setBounds(570, 20, 230, 22);
-        cl2 = new ChessLine(Chess.BLACK);
+        ChessLine cl2 = new ChessLine(Chess.BLACK);
         cl2.setBounds(570, 100, 230, 22);
-        cl3 = new ChessLine(Chess.WHITE);
+        ChessLine cl3 = new ChessLine(Chess.WHITE);
         cl3.setBounds(570, 180, 230, 22);
         add(cb);
         add(cl1);

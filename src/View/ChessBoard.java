@@ -8,9 +8,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- *
- */
 public class ChessBoard extends JPanel implements MouseListener {
     public static final int GAME_OVER = 0;
     public static final int COLS = 19;
