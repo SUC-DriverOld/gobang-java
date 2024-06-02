@@ -4,12 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * SelectMenu 类代表游戏的主菜单，用户可以在此选择不同的游戏模式或退出游戏。
+ */
 public class SelectMenu extends JFrame implements MouseListener, ActionListener, MouseMotionListener {
     public Point pos;
 
+    /**
+     * 构造一个 SelectMenu 对象。
+     */
     public SelectMenu() {
         setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-        // 使用系统自带的窗口装饰
         setUndecorated(false);
         setVisible(true);
         setLayout(null);
@@ -20,9 +25,11 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
         addMouseListener(this);
     }
 
-
+    /**
+     * 绘制主菜单的背景图片。
+     */
     public void paintBg() {
-        ImageIcon image = new ImageIcon("src/images/5.jpg");
+        ImageIcon image = new ImageIcon("src/images/menu.png");
         JLabel la3 = new JLabel(image);
         la3.setBounds(0, 0, this.getWidth(), this.getHeight());// 添加图片，设置图片大小为窗口的大小。
         this.getLayeredPane().add(la3, new Integer(Integer.MIN_VALUE)); // 将JLabel加入到面板容器的最高层
@@ -31,9 +38,7 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
+    public void mouseClicked(MouseEvent e) {}
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -54,28 +59,20 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 
     public static void main(String[] args) {
         new SelectMenu();
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
+    public void actionPerformed(ActionEvent e) {}
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -84,8 +81,5 @@ public class SelectMenu extends JFrame implements MouseListener, ActionListener,
     }
 
     @Override
-    public void mouseMoved(MouseEvent e) {
-
-    }
+    public void mouseMoved(MouseEvent e) {}
 }
-

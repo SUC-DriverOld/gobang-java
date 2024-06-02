@@ -8,30 +8,41 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * PPChessBoard 类表示玩家对战的五子棋棋盘，继承自 ChessBoard 类。
+ */
 public class PPChessBoard extends ChessBoard {
-    private int role;
-    private JTextArea ta_pos_info;
-    private final PPMainBoard mb;
-    private final WinDialog dialog;
+
+    private int role; // 角色，黑色或白色
+    private JTextArea ta_pos_info; // 位置信息文本区域
+    private final PPMainBoard mb; // 主界面对象
+    private final WinDialog dialog; // 胜利对话框
 
     /**
-     * 构造函数，初始化棋盘的图片，初始化数组
+     * 构造函数，初始化棋盘和相关组件
+     * @param mb 主界面对象
+     * @param dialog 胜利对话框对象
      */
     public PPChessBoard(PPMainBoard mb, WinDialog dialog) {
-        super();
+        super(); // 调用父类构造方法初始化棋盘
         this.mb = mb;
         this.dialog = dialog;
-        setRole(Chess.WHITE);
+        setRole(Chess.WHITE); // 设置默认角色为白色
     }
 
+    /**
+     * 设置位置信息文本区域
+     * @param ta 位置信息文本区域对象
+     */
     public void setInfoBoard(JTextArea ta) {
         ta_pos_info = ta;
     }
 
     /**
-     * 设置棋子横坐标
-     * 
-     * @param x,y,r 横坐标,纵坐标,对方的角色黑/白
+     * 设置棋子横纵坐标和角色
+     * @param x 横坐标
+     * @param y 纵坐标
+     * @param r 角色，黑/白
      */
     public void setCoord(int x, int y, int r) {
         if (r == Chess.WHITE) {
@@ -51,23 +62,29 @@ public class PPChessBoard extends ChessBoard {
         repaint();
     }
 
+    /**
+     * 设置角色
+     * @param role 角色，黑/白
+     */
     public void setRole(int role) {
         this.role = role;
     }
 
     /**
-     * 从父类继承的方法，自动调用，绘画图形
-     * 
-     * @param g 该参数是绘制图形的句柄
+     * 绘制棋盘图形
+     * @param g 绘图对象
      */
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+        super.paintComponent(g); // 调用父类方法绘制基本图形
     }
 
+    /**
+     * 处理胜利事件
+     * @param winner 胜利者
+     */
     public void WinEvent(int winner) {
-        // 白棋赢
-        if (winner == Chess.WHITE) {
+        if (winner == Chess.WHITE) { // 白棋获胜
             try {
                 mb.getTimer().interrupt();
             } catch (Exception e1) {
@@ -88,9 +105,7 @@ public class PPChessBoard extends ChessBoard {
                 mb.getLabel().setText(null);
                 ta_pos_info.setText(null);
             }
-        }
-        // 黑棋赢
-        else if (winner == Chess.BLACK) {
+        } else if (winner == Chess.BLACK) { // 黑棋获胜
             try {
                 mb.getTimer().interrupt();
             } catch (Exception e1) {
@@ -115,12 +130,12 @@ public class PPChessBoard extends ChessBoard {
     }
 
     /**
-     * 按下鼠标时，记录鼠标的位置，并改写数组的数值，重新绘制图形
-     *
+     * 处理鼠标按下事件
+     * @param e 鼠标事件对象
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        if (clickable == PPMainBoard.CAN_CLICK_INFO) {
+        if (clickable == PPMainBoard.CAN_CLICK_INFO) { // 如果可以点击
             chessX = e.getX();
             chessY = e.getY();
             if (chessX < 524 && chessX > 50 && chessY < 523 && chessY > 50) {
@@ -128,20 +143,20 @@ public class PPChessBoard extends ChessBoard {
                 float y = (float) (chessY - 50) / 25;
                 int x1 = (int) x;
                 int y1 = (int) y;
-                // 如果这个地方没有棋子
-                if (chess[x1][y1] == 0) {
-                    chess[x1][y1] = role;
+                if (chess[x1][y1] == 0) { // 如果该位置没有棋子
+                    chess[x1][y1] = role; // 放置棋子
                     if (role == Chess.WHITE) {
                         ta_pos_info.append("白棋位置为:" + x1 + "," + y1 + "\n");
                     } else {
                         ta_pos_info.append("黑棋位置为:" + x1 + "," + y1 + "\n");
                     }
-                    NetTool.sendUdpBroadCast(mb.getIp(), "POS" + "," + x1 + "," + y1 + "," + role);
-                    int winner = JudgeWinner.PPJudge(x1, y1, chess, role);
-                    WinEvent(winner);
-                    setClickable(MainBoard.CAN_NOT_CLICK_INFO);
+                    NetTool.sendUdpBroadCast(mb.getIp(), "POS" + "," + x1 + "," + y1 + "," + role); // 发送位置信息
+                    int winner = JudgeWinner.PPJudge(x1, y1, chess, role); // 判断是否有玩家获胜
+                    WinEvent(winner); // 处理获胜事件
+                    setClickable(MainBoard.CAN_NOT_CLICK_INFO); // 设置不可点击
                 }
             }
         }
     }
 }
+

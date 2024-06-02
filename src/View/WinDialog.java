@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 
+ * WinDialog 类表示游戏胜利时弹出的对话框，允许用户重新开始游戏或返回主菜单。
  */
 public class WinDialog extends JDialog implements ActionListener {
     public static final int RESTART = 1;
@@ -15,6 +15,13 @@ public class WinDialog extends JDialog implements ActionListener {
     private JLabel label;
     private int msg;
 
+    /**
+     * 构造一个 WinDialog 对象。
+     *
+     * @param f     父窗口
+     * @param title 对话框标题
+     * @param b     模态对话框的模式
+     */
     public WinDialog(JFrame f, String title, boolean b) {
         super(f, title, b);
         setLayout(null);
@@ -23,10 +30,20 @@ public class WinDialog extends JDialog implements ActionListener {
         init();
     }
 
+    /**
+     * 获取用户的选择信息。
+     *
+     * @return 选择信息，1 为重新开始游戏，0 为返回主页面
+     */
     public int getMsg() {
         return msg;
     }
 
+    /**
+     * 设置胜利信息。
+     *
+     * @param winnerInfo 胜利信息
+     */
     public void setWinnerInfo(String winnerInfo) {
         label.setText(winnerInfo);
     }

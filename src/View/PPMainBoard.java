@@ -10,23 +10,36 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
 public class PPMainBoard extends MainBoard {
-    private PPChessBoard cb;
-    private JButton btn_startGame;
-    private JButton btn_back;
-    private JTextField tf_ip;
-    private String ip;
-    private DatagramSocket socket;
-    private String gameState;
-    private String enemyGameState;
+    private PPChessBoard cb; // 对战棋盘
+    private JButton btn_startGame; // 开始游戏按钮
+    private JButton btn_back; // 退出按钮
+    private JTextField tf_ip; // 输入IP地址文本框
+    private String ip; // IP地址
+    private DatagramSocket socket; // 数据报套接字
+    private String gameState; // 游戏状态
+    private String enemyGameState; // 对手游戏状态
 
+    /**
+     * 获取开始游戏按钮
+     *
+     * @return 开始游戏按钮对象
+     */
     public JButton getBtn_startGame() {
         return btn_startGame;
     }
 
+    /**
+     * 获取IP地址
+     *
+     * @return IP地址字符串
+     */
     public String getIp() {
         return ip;
     }
 
+    /**
+     * 构造函数，初始化主面板
+     */
     public PPMainBoard() {
         super();
         label_timeCount.setBounds(602, 330, 230, 40);
@@ -34,37 +47,44 @@ public class PPMainBoard extends MainBoard {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * 初始化界面组件
+     */
     public void init() {
         gameState = "NOT_START";
         enemyGameState = "NOT_START";
-        // 接收到发送端的信息
-        tf_ip = new JTextField("请输入IP地址");
-        tf_ip.setBounds(582, 379, 200, 30);
+        // 提示信息
+        JLabel help = new JLabel("请输入IP地址");
+        help.setBounds(582, 350, 190, 30);
+        help.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+        tf_ip = new JTextField();
+        tf_ip.setBounds(582, 380, 190, 30);
         tf_ip.addMouseListener(this);
         btn_startGame = new JButton("准备游戏");
         btn_startGame.setFocusPainted(false);
         btn_startGame.setBackground(Color.CYAN);
         btn_startGame.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
         btn_startGame.addActionListener(this);
-        btn_startGame.setBounds(582, 429, 200, 50);
+        btn_startGame.setBounds(582, 430, 190, 50);
         btn_back = new JButton("退        出");
         btn_back.setFocusPainted(false);
         btn_back.setBackground(Color.CYAN);
         btn_back.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
         btn_back.addActionListener(this);
-        btn_back.setBounds(582, 499, 200, 50);
+        btn_back.setBounds(582, 500, 190, 50);
         JTextArea ta_chess_info = new JTextArea();
         ta_chess_info.setEnabled(false);
-        ta_chess_info.setBackground(Color.BLUE);
+        ta_chess_info.setBackground(Color.WHITE);
         ta_chess_info.setForeground(Color.black);
         JScrollPane p = new JScrollPane(ta_chess_info);
-        p.setBounds(582, 20, 200, 300);
+        p.setBounds(582, 20, 190, 300);
         WinDialog dialog = new WinDialog(this, "恭喜", true);
         cb = new PPChessBoard(this, dialog);
         cb.setClickable(PPMainBoard.CAN_NOT_CLICK_INFO);
         cb.setBounds(0, 20, 570, 585);
         cb.setVisible(true);
         cb.setInfoBoard(ta_chess_info);
+        add(help);
         add(tf_ip);
         add(cb);
         add(btn_startGame);
@@ -119,7 +139,11 @@ public class PPMainBoard extends MainBoard {
             }
         }).start();
     }
-
+    /**
+     * 响应按钮点击事件
+     *
+     * @param e 事件对象
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn_startGame) {
