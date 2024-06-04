@@ -55,7 +55,7 @@ public class Computer {
         }
 
         // 找到评分最高的点
-        if (findBestPos_medium(everyPlayerPointScore, playerCoord) >= findBestPos(everyComputerPointScore, computerCoord)) {
+        if (findBestPos_medium(everyPlayerPointScore, playerCoord) >= findBestPos_medium(everyComputerPointScore, computerCoord)) {
             coord = playerCoord;
         } else {
             coord = computerCoord;
@@ -287,26 +287,5 @@ public class Computer {
             countTwo++;
         }
         mark_medium(count, leftDown + rightUp, countTwo, role);
-    }
-
-    /**
-     * 找到最大分数点的坐标
-     *
-     * @param a 数组 存储每个点的分数
-     * @param c 保存最大分数点的坐标
-     */
-    public int findBestPos(int[][] a, Coord c) {
-        int i, j, max = 0;
-
-        for (i = 0; i < 19; i++) {
-            for (j = 0; j < 19; j++) {
-                if (a[i][j] > max) {
-                    max = a[i][j];
-                    c.setX(i);
-                    c.setY(j);
-                }
-            }
-        }
-        return max;
     }
 }

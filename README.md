@@ -30,6 +30,18 @@ gobang-java 使用 java swing 实现的五子棋，目前有人机对战模式�
 
 3. 从`src\View\SelectMenu.java`启动
 
+> [!WARNING]
+> 从`.jar`启动时请在同级目录下添加`src/images`文件夹，否则会出现找不到图片的错误。例如：
+
+```bash
+gobang
+│ gobang.jar
+└─src
+    └─images
+         black.png
+         ...
+```
+
 ## 致谢
 
 - [Swing](https://docs.oracle.com/javase/tutorial/uiswing/index.html)
