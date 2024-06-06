@@ -40,7 +40,6 @@ public class PCChessBoard extends ChessBoard {
         role = Chess.WHITE; // 玩家执白棋
         com = new Computer(); // 初始化电脑对象
         dialog = new WinDialog(mb, "恭喜", true); // 初始化获胜对话框
-        setBorder(new LineBorder(new Color(0, 0, 0))); // 设置边界
     }
 
     /**

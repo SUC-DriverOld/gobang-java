@@ -51,14 +51,20 @@ public class WinDialog extends JDialog implements ActionListener {
     private void init() {
         btn_restart = new JButton("重新开始");
         btn_restart.setFocusPainted(false);
-        btn_restart.setBackground(Color.CYAN);
+        btn_restart.setFont(new Font("Microsoft Yahei", Font.BOLD, 15));
+        btn_restart.setForeground(Color.WHITE);
+        btn_restart.setBackground(new Color(82, 109, 165));
         btn_restart.addActionListener(this);
         btn_restart.setBounds(20, 110, 115, 40);
         btn_back = new JButton("返回主页面");
+        btn_back.setFocusPainted(false);
+        btn_back.setFont(new Font("Microsoft Yahei", Font.BOLD, 15));
+        btn_back.setForeground(Color.WHITE);
         btn_back.setBounds(155, 110, 115, 40);
-        btn_back.setBackground(Color.CYAN);
+        btn_back.setBackground(new Color(82, 109, 165));
         btn_back.addActionListener(this);
         label = new JLabel();
+        label.setFont(new Font("Microsoft Yahei", Font.BOLD, 20));
         label.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 20));
         label.setBounds(100, 10, 100, 100);
         add(btn_restart);

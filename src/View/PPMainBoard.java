@@ -56,20 +56,20 @@ public class PPMainBoard extends MainBoard {
         // 提示信息
         JLabel help = new JLabel("请输入IP地址");
         help.setBounds(582, 350, 190, 30);
-        help.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+        help.setFont(new Font("Microsoft Yahei", Font.BOLD, 16));
         tf_ip = new JTextField();
         tf_ip.setBounds(582, 380, 190, 30);
         tf_ip.addMouseListener(this);
         btn_startGame = new JButton("准备游戏");
         btn_startGame.setFocusPainted(false);
         btn_startGame.setBackground(Color.CYAN);
-        btn_startGame.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
+        btn_startGame.setFont(new Font("Microsoft Yahei", Font.BOLD, 22));
         btn_startGame.addActionListener(this);
         btn_startGame.setBounds(582, 430, 190, 50);
-        btn_back = new JButton("退        出");
+        btn_back = new JButton("退      出");
         btn_back.setFocusPainted(false);
         btn_back.setBackground(Color.CYAN);
-        btn_back.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
+        btn_back.setFont(new Font("Microsoft Yahei", Font.BOLD, 22));
         btn_back.addActionListener(this);
         btn_back.setBounds(582, 500, 190, 50);
         JTextArea ta_chess_info = new JTextArea();

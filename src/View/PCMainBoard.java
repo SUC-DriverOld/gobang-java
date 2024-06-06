@@ -47,7 +47,7 @@ public class PCMainBoard extends MainBoard {
         btn_startGame.setBounds(582, 205, 190, 50);
         btn_startGame.setBackground(new Color(227, 164, 113));
         btn_startGame.setFocusable(false);
-        btn_startGame.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+        btn_startGame.setFont(new Font("Microsoft Yahei", Font.BOLD, 20));
         btn_startGame.addActionListener(this);
 
         // 创建并设置"悔棋"按钮
@@ -55,7 +55,7 @@ public class PCMainBoard extends MainBoard {
         btn_back.setBounds(582, 270, 190, 50);
         btn_back.setBackground(new Color(144, 142, 153));
         btn_back.setFocusable(false);
-        btn_back.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
+        btn_back.setFont(new Font("Microsoft Yahei", Font.BOLD, 22));
         btn_back.addActionListener(this);
 
         // 创建并设置"返回"按钮
@@ -63,7 +63,7 @@ public class PCMainBoard extends MainBoard {
         btn_exit.setBackground(new Color(82, 109, 165));
         btn_exit.setBounds(582, 335, 190, 50);
         btn_exit.setFocusable(false);
-        btn_exit.setFont(new Font(Font.DIALOG, Font.BOLD, 22));
+        btn_exit.setFont(new Font("Microsoft Yahei", Font.BOLD, 22));
         btn_exit.addActionListener(this);
 
         // 将组件添加到主界面中
