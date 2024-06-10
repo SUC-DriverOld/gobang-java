@@ -33,15 +33,6 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
     }
 
     /**
-     * 获取显示时间的标签
-     *
-     * @return 显示时间的标签对象
-     */
-    public JLabel getLabel() {
-        return label_timeCount;
-    }
-
-    /**
      * 构造函数，初始化主窗口
      */
     public MainBoard() {
@@ -86,56 +77,26 @@ public class MainBoard extends JFrame implements MouseListener, ActionListener {
         add(label_timeCount);
     }
 
-    /**
-     * ActionListener 接口的实现方法
-     *
-     * @param e 触发的动作事件
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
     }
 
-    /**
-     * MouseListener 接口的实现方法，鼠标点击事件
-     *
-     * @param e 触发的鼠标事件
-     */
     @Override
     public void mouseClicked(MouseEvent e) {
     }
 
-    /**
-     * MouseListener 接口的实现方法，鼠标按下事件
-     *
-     * @param e 触发的鼠标事件
-     */
     @Override
     public void mousePressed(MouseEvent e) {
     }
 
-    /**
-     * MouseListener 接口的实现方法，鼠标释放事件
-     *
-     * @param e 触发的鼠标事件
-     */
     @Override
     public void mouseReleased(MouseEvent e) {
     }
 
-    /**
-     * MouseListener 接口的实现方法，鼠标进入事件
-     *
-     * @param e 触发的鼠标事件
-     */
     @Override
     public void mouseEntered(MouseEvent e) {
     }
 
-    /**
-     * MouseListener 接口的实现方法，鼠标退出事件
-     *
-     * @param e 触发的鼠标事件
-     */
     @Override
     public void mouseExited(MouseEvent e) {
     }

@@ -74,20 +74,16 @@ public class PCChessBoard extends ChessBoard {
         // 白棋赢
         if (winner == Chess.WHITE) {
             result = GAME_OVER;
-            try {
-                mb.getTimer().interrupt(); // 中断计时器线程
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+            mb.getTimer().interrupt(); // 中断计时器线程
             mb.getBtn_startGame().setText("开始游戏"); // 设置开始游戏按钮的文本
             mb.getBtn_startGame().setEnabled(true); // 启用开始游戏按钮
             dialog.setWinnerInfo("白棋获胜!"); // 设置获胜对话框的内容
             setClickable(MainBoard.CAN_NOT_CLICK_INFO); // 设置不能点击棋盘
             dialog.setVisible(true); // 显示获胜对话框
             // 根据对话框的选择来决定下一步操作
-            if (dialog.getMsg() == WinDialog.BACK) {
+            if (dialog.getMsg() == WinDialog.EXIT) {
                 mb.dispose();
-                new SelectMenu();
+                System.exit(0);
             } else {
                 initArray();
             }
@@ -95,20 +91,16 @@ public class PCChessBoard extends ChessBoard {
         // 黑棋赢
         else if (winner == Chess.BLACK) {
             result = GAME_OVER;
-            try {
-                mb.getTimer().interrupt(); // 中断计时器线程
-            } catch (Exception e1) {
-                e1.printStackTrace();
-            }
+            mb.getTimer().interrupt(); // 中断计时器线程
             mb.getBtn_startGame().setText("开始游戏"); // 设置开始游戏按钮的文本
             mb.getBtn_startGame().setEnabled(true); // 启用开始游戏按钮
             setClickable(MainBoard.CAN_NOT_CLICK_INFO); // 设置不能点击棋盘
             dialog.setWinnerInfo("黑棋获胜!"); // 设置获胜对话框的内容
             dialog.setVisible(true); // 显示获胜对话框
             // 根据对话框的选择来决定下一步操作
-            if (dialog.getMsg() == WinDialog.BACK) {
+            if (dialog.getMsg() == WinDialog.EXIT) {
                 mb.dispose();
-                new SelectMenu();
+                System.exit(0);
             } else {
                 initArray();
             }

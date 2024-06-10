@@ -41,9 +41,9 @@ public class ChessBoard extends JPanel implements MouseListener {
      */
     public ChessBoard() {
         chessBoardImage = Toolkit.getDefaultToolkit().getImage("src/images/gobang.png");
+        laceImage = Toolkit.getDefaultToolkit().getImage("src/images/lace.png");
         whiteChess = Toolkit.getDefaultToolkit().getImage("src/images/white.png");
         blackChess = Toolkit.getDefaultToolkit().getImage("src/images/black.png");
-        laceImage = Toolkit.getDefaultToolkit().getImage("src/images/lace.png");
         initArray();
         addMouseListener(this);
     }
@@ -80,10 +80,10 @@ public class ChessBoard extends JPanel implements MouseListener {
         g.drawImage(chessBoardImage, 35, 35, null);
         for (int i = 0; i < COLS; i++) {
             for (int j = 0; j < RAWS; j++) {
-                if (chess[i][j] == Chess.BLACK) {
-                    g.drawImage(blackChess, 60 + i * 25 - 11, 62 + j * 25 - 12, null);
-                } else if (chess[i][j] == Chess.WHITE) {
+                if (chess[i][j] == Chess.WHITE) {
                     g.drawImage(whiteChess, 60 + i * 25 - 11, 62 + j * 25 - 12, null);
+                } else if (chess[i][j] == Chess.BLACK) {
+                    g.drawImage(blackChess, 60 + i * 25 - 11, 62 + j * 25 - 12, null);
                 }
             }
         }

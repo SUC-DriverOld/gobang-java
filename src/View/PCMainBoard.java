@@ -38,7 +38,7 @@ public class PCMainBoard extends MainBoard {
      */
     public void init() {
         cb = new PCChessBoard(this); // 创建 PCChessBoard 对象
-        cb.setClickable(PPMainBoard.CAN_NOT_CLICK_INFO); // 设置初始不可点击
+        cb.setClickable(PCMainBoard.CAN_NOT_CLICK_INFO); // 设置初始不可点击
         cb.setBounds(0, 20, 570, 585); // 设置 PCChessBoard 组件在界面中的位置和大小
         cb.setVisible(true); // 设置 PCChessBoard 可见
 
@@ -59,7 +59,7 @@ public class PCMainBoard extends MainBoard {
         btn_back.addActionListener(this);
 
         // 创建并设置"返回"按钮
-        btn_exit = new JButton("返      回");
+        btn_exit = new JButton("退      出");
         btn_exit.setBackground(new Color(82, 109, 165));
         btn_exit.setBounds(582, 335, 190, 50);
         btn_exit.setFocusable(false);
@@ -89,7 +89,7 @@ public class PCMainBoard extends MainBoard {
             cb.backStep(); // 调用 PCChessBoard 的悔棋方法
         } else if (e.getSource() == btn_exit) { // 返回按钮点击事件
             dispose(); // 关闭当前窗口
-            new SelectMenu(); // 打开选择菜单窗口
+            System.exit(0); // 打开选择菜单窗口
         }
     }
 }

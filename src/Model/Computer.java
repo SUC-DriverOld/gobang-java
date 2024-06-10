@@ -21,7 +21,7 @@ public class Computer {
      */
     public Coord computePos(int[][] chess) {
         // 根据当前棋盘状态计算最佳下棋位置
-        countMaxLines_medium(chess, Chess.WHITE);
+        countMaxLines(chess, Chess.WHITE);
         return coord;
     }
 
@@ -31,7 +31,7 @@ public class Computer {
      * @param chess 棋盘数组
      * @param role  当前角色（白棋还是黑棋）
      */
-    public void countMaxLines_medium(int[][] chess, int role) {
+    public void countMaxLines(int[][] chess, int role) {
         Coord playerCoord = new Coord();
         Coord computerCoord = new Coord();
         int x, y;
@@ -42,9 +42,9 @@ public class Computer {
                 // 如果该位置没有棋子
                 if (chess[x][y] == Chess.NO_CHESS) {
                     // 计算该位置对玩家和电脑的评分
-                    countEveryPos_medium(x, y, chess, role);
+                    countEveryPos(x, y, chess, role);
                     everyPlayerPointScore[x][y] = scores;
-                    countEveryPos_medium(x, y, chess, Chess.BLACK);
+                    countEveryPos(x, y, chess, Chess.BLACK);
                     everyComputerPointScore[x][y] = scores;
                 } else {
                     // 如果有棋子，分数为0
@@ -55,7 +55,7 @@ public class Computer {
         }
 
         // 找到评分最高的点
-        if (findBestPos_medium(everyPlayerPointScore, playerCoord) >= findBestPos_medium(everyComputerPointScore, computerCoord)) {
+        if (findBestPos(everyPlayerPointScore, playerCoord) >= findBestPos(everyComputerPointScore, computerCoord)) {
             coord = playerCoord;
         } else {
             coord = computerCoord;
@@ -69,7 +69,7 @@ public class Computer {
      * @param c 保存最大分数点的坐标
      * @return 最大的分数值
      */
-    public int findBestPos_medium(int[][] a, Coord c) {
+    public int findBestPos(int[][] a, Coord c) {
         int i, j, max = 0;
 
         // 遍历找到最大分数的点
@@ -93,7 +93,7 @@ public class Computer {
      * @param countTwo 两边有一个空位的两个连在一起的棋子数量
      * @param role 当前角色
      */
-    public void mark_medium(int count, int i, int countTwo, int role) {
+    public void mark(int count, int i, int countTwo, int role) {
         if (count == 1) {
             scores += 10;
         } else if (count == 2 && i == 0 && role == Chess.WHITE && countTwo <= 1) {
@@ -148,7 +148,7 @@ public class Computer {
      * @param chess 当前棋盘的状态
      * @param role 当前角色
      */
-    public void countEveryPos_medium(int x, int y, int[][] chess, int role) {
+    public void countEveryPos(int x, int y, int[][] chess, int role) {
         scores = 0;
         basicScore(x, y);
 
@@ -184,7 +184,7 @@ public class Computer {
         if (count == 2 && (up + down == 0)) {
             countTwo++;
         }
-        mark_medium(count, up + down, countTwo, role);
+        mark(count, up + down, countTwo, role);
 
         // 水平方向判断
         x = startX;
@@ -216,7 +216,7 @@ public class Computer {
         if (count == 2 && (left + right == 0)) {
             countTwo++;
         }
-        mark_medium(count, left + right, countTwo, role);
+        mark(count, left + right, countTwo, role);
 
         // 右倾斜方向判断
         x = startX;
@@ -251,7 +251,7 @@ public class Computer {
         if (count == 2 && (leftUp + rightDown == 0)) {
             countTwo++;
         }
-        mark_medium(count, leftUp + rightDown, countTwo, role);
+        mark(count, leftUp + rightDown, countTwo, role);
 
         // 左倾斜方向判断
         x = startX;
@@ -286,6 +286,6 @@ public class Computer {
         if (count == 2 && (leftDown + rightUp == 0)) {
             countTwo++;
         }
-        mark_medium(count, leftDown + rightUp, countTwo, role);
+        mark(count, leftDown + rightUp, countTwo, role);
     }
 }

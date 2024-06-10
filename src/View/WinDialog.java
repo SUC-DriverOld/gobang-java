@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class WinDialog extends JDialog implements ActionListener {
     public static final int RESTART = 1;
-    public static final int BACK = 0;
+    public static final int EXIT = 0;
     private JButton btn_restart, btn_back;
     private JLabel label;
     private int msg;
@@ -56,7 +56,7 @@ public class WinDialog extends JDialog implements ActionListener {
         btn_restart.setBackground(new Color(82, 109, 165));
         btn_restart.addActionListener(this);
         btn_restart.setBounds(20, 110, 115, 40);
-        btn_back = new JButton("返回主页面");
+        btn_back = new JButton("退出游戏");
         btn_back.setFocusPainted(false);
         btn_back.setFont(new Font("Microsoft Yahei", Font.BOLD, 15));
         btn_back.setForeground(Color.WHITE);
@@ -65,7 +65,6 @@ public class WinDialog extends JDialog implements ActionListener {
         btn_back.addActionListener(this);
         label = new JLabel();
         label.setFont(new Font("Microsoft Yahei", Font.BOLD, 20));
-        label.setFont(new Font(Font.DIALOG_INPUT, Font.BOLD, 20));
         label.setBounds(100, 10, 100, 100);
         add(btn_restart);
         add(btn_back);
@@ -78,7 +77,7 @@ public class WinDialog extends JDialog implements ActionListener {
             msg = RESTART;
             setVisible(false);
         } else if (e.getSource() == btn_back) {
-            msg = BACK;
+            msg = EXIT;
             setVisible(false);
         }
     }
