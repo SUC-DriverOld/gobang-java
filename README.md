@@ -8,7 +8,7 @@
 ![GitHub](https://img.shields.io/github/release/SUC-DriverOld/gobang-java)
 
 gobang-java 使用 java swing 实现的五子棋，目前有人机对战模式和双人对战模式\
-项目用于：南京邮电大学《java 程序设计》课程大作业\
+项目用于：B22080415 南京邮电大学《java 程序设计》课程大作业\
 如需simple版本（仅有人机对战功能），请切换到[simple](https://github.com/SUC-DriverOld/gobang-java/tree/simple)分支
 
 </div>
